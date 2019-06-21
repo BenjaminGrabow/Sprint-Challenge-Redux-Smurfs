@@ -19,10 +19,13 @@ class App extends Component {
       <div>
       <NavLink to="/">Smurfs</NavLink>
       {this.props.smurfs.map(smurf => {
-        return <NavLink to={`/${smurf.name}`} >{smurf.name}</NavLink>
+        return <NavLink
+        key={smurf.id}
+         to={`/${smurf.name}`} >{smurf.name}</NavLink>
       })}
       {this.props.smurfs.map(smurf => {
         return <Route
+        key={smurf.id}
        path={`/${smurf.name}`}
         render={() => <Smurf {...this.props} smurf={smurf} />}
         />
