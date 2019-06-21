@@ -78,6 +78,21 @@ class App extends Component {
 
 
   render() {
+    if (this.props.loading) {
+      return (
+        <StyledDiv>
+          Loading...
+        </StyledDiv>
+      );
+    }
+
+    if (this.props.error) {
+      return (
+        <StyledDiv>
+          <div>Argh! This failed rather miserably. {this.props.error}</div>
+        </StyledDiv>
+      );
+    }
     return (
       <StyledDiv>
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -140,8 +155,10 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfs
+    smurfs: state.smurfs,
+    loading: state.loading,
+    error: state.error
   }
-}
+};
 
 export default connect(mapStateToProps, { fetch, update, deleter, add })(App);
