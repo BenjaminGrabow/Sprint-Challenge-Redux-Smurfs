@@ -9,6 +9,12 @@ import { connect } from 'react-redux';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+
+     }
+  }
   
   componentDidMount = () => {
     this.fetchSmurfs();
@@ -16,6 +22,10 @@ class App extends Component {
 
   fetchSmurfs = () => {
     this.props.fetch();
+  };
+
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
   
   render() {
@@ -29,6 +39,24 @@ class App extends Component {
             <p>{smurf.age}</p>
             <p>{smurf.height}</p>
           </div>)}
+          <input
+            onChange={this.handleInputChange}
+            placeholder="name"
+            value={this.state.name}
+            name="name"
+          />
+          <input
+            onChange={this.handleInputChange}
+            placeholder="age"
+            value={this.state.age}
+            name="age"
+          />
+          <input
+            onChange={this.handleInputChange}
+            placeholder="height"
+            value={this.state.height}
+            name="height"
+          />
       </div>
     );
   }

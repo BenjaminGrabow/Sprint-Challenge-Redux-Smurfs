@@ -36,7 +36,7 @@ export const fetch = () => dispatch => {
 
 export const deleter = (id) => dispatch => {
   axios.delete(`http://localhost:3333/smurfs/${id}`)
-  then(res => {
+  .then(res => {
     dispatch({ type: DELETE, payload: res.date})
   });
 };
