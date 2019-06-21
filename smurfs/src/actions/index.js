@@ -62,13 +62,13 @@ export const addRating = (id, message) => (dispatch) => {
           img: ''
   };
 
-  axios.get(`http://localhost:5000/api/friends/${id}`)
+  axios.get(`http://localhost:3333/smurfs/${id}`)
           .then(res => {
                   const theFriend = res.data;
 
                   const updateFriend = theFriend.messages.push(newMessage);
 
-                  return axios.put(`http://localhost:5000/api/friends/${id}`, theFriend).then(res => {
+                  return axios.put(`http://localhost:3333/smurfs/${id}`, theFriend).then(res => {
                           dispatch({ type: UPDATE_MESSAGES, payload: res.data })
                   });
           });

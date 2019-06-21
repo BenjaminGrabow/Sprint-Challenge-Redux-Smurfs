@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
       return { loading: false, error: null, smurfs: action.payload };
 
     case types.UPDATE_MESSAGES:
-      return { ...state, friends: action.payload }
+      return { ...state, smurfs: action.payload }
     default: return state;
   }
 };

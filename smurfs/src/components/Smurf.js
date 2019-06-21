@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { addRating } from '../actions/';
+import { addRating } from '../actions/index';
 
 
 const StyledDiv = styled.div`

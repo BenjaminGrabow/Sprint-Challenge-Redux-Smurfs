@@ -30,7 +30,7 @@ class App extends Component {
         render={() => <Smurf {...this.props} smurf={smurf} />}
         />
       })}
-      <Route path="/" component={Smurfs} />
+      <Route exact path="/" component={Smurfs} />
     </div>
      );
   }
