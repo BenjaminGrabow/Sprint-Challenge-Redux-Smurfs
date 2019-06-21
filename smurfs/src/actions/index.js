@@ -18,6 +18,9 @@ import axios from 'axios';
 export const LOADING = 'LOADING';
 export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
+export const ADD = 'ADD';
+export const DELETE ='DELETE';
+export const UPDATE = 'UPDATE';
 
 export const fetch = () => dispatch => {
   dispatch({ type: LOADING});
@@ -28,5 +31,38 @@ export const fetch = () => dispatch => {
   })
   .catch(err => {
     dispatch({ type: ERROR})
+  });
+};
+
+export const deleter = (id) => dispatch => {
+  axios.delete(`http://localhost:3333/smurfs/${id}`)
+  then(res => {
+    dispatch({ type: DELETE, payload: res.date})
+  });
+};
+
+export const add = (name, age, height) => dispatch => {
+  const newSmurf = {
+    name: name,
+    age: age,
+    height: height,
+  };
+
+  axios.post('http://localhost:3333/smurfs', newSmurf)
+  .then(res => {
+    dispatch({ type: add, payload: res.data})
+  });
+};
+
+export const update = (id, name, age, height) => dispatch => {
+  const updatedSmurf = {
+    name: name,
+    age: age, 
+    height: height
+  };
+
+  axios.put(`http://localhost:3333/smurfs/${id}`, updatedSmurf)
+  .then(res => {
+    dispatch({ type: UPDATE, payload: res.data})
   });
 };
