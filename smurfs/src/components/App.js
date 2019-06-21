@@ -99,13 +99,19 @@ class App extends Component {
         <div>Welcome to your Redux version of Smurfs!</div>
         {this.props.smurfs.map(smurf =>
           <div
-          className='smurfs'
-          key={smurf.id}>
+            className='smurfs'
+            key={smurf.id}>
             <p>{smurf.name}</p>
             <p>{smurf.age}</p>
             <p>{smurf.height}</p>
-            <button onClick={() => this.props.deleter(smurf.id)}>X</button>
-            <button onClick={this.showInput}>Update</button>
+            <button
+              onClick={() => this.props.deleter(smurf.id)}>
+              X
+               </button>
+            <button
+              onClick={this.showInput}>
+              Update
+               </button>
             <div
               className={this.state.input === 'off' ? 'off' : null}>
               <input
