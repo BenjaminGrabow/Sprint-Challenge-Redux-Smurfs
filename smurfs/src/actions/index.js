@@ -50,7 +50,7 @@ export const add = (name, age, height) => dispatch => {
 
   axios.post('http://localhost:3333/smurfs', newSmurf)
   .then(res => {
-    dispatch({ type: add, payload: res.data})
+    dispatch({ type: ADD, payload: res.data})
   });
 };
 

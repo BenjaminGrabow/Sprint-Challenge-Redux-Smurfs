@@ -9,13 +9,13 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch(action.type) {
     case types.LOADING:
-      return { ... state, loading: true};
+    return {... state, loading: true};
     
     case types.SUCCESS:
-        return { ...state, loading: false, smurfs: action.payload,};
+    return {...state, loading: false, smurfs: action.payload,};
 
     case types.ERROR:
-    return { ...state, loading: false, error: 'NOT FOUND'};
+    return {...state, loading: false, error: 'NOT FOUND'};
 
     case types.ADD:
     return { loading: false, error: null, smurfs: action.payload };
