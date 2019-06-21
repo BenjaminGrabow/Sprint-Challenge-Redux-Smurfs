@@ -1,18 +1,3 @@
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
-
-/*
-  For this project you'll need at least 2 action creators for the main portion,
-   and 2 more for the stretch problem.
-   Be sure to include action types for each type of action creator. Also, be sure to mind
-     the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
-*/
 import axios from 'axios';
 
 export const LOADING = 'LOADING';
@@ -21,6 +6,7 @@ export const ERROR = 'ERROR';
 export const ADD = 'ADD';
 export const DELETE ='DELETE';
 export const UPDATE = 'UPDATE';
+export const UPDATE_MESSAGES = 'UPDATE_MESSAGES';
 
 export const fetch = () => dispatch => {
   dispatch({ type: LOADING});
@@ -68,4 +54,22 @@ export const update = (id, name, age, height) => dispatch => {
   .catch(err => {
     dispatch({ type: ERROR})
   });
+};
+
+export const addRating = (id, message) => (dispatch) => {
+  const newMessage = {
+          message: message,
+          img: ''
+  };
+
+  axios.get(`http://localhost:5000/api/friends/${id}`)
+          .then(res => {
+                  const theFriend = res.data;
+
+                  const updateFriend = theFriend.messages.push(newMessage);
+
+                  return axios.put(`http://localhost:5000/api/friends/${id}`, theFriend).then(res => {
+                          dispatch({ type: UPDATE_MESSAGES, payload: res.data })
+                  });
+          });
 };
