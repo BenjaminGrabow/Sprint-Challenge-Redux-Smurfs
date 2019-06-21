@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { fetch } from '../actions';
+import { fetch, update, deleter, add } from '../actions';
 import { connect } from 'react-redux';
 /*
  to wire this component up you're going to need a few things.
@@ -12,7 +12,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-
+      name: '',
+      age: '',
+      height: ''
      }
   }
   
@@ -27,6 +29,32 @@ class App extends Component {
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  deletIt = (id) => {
+    this.props.deleter(id);
+  };
+
+  updateIt = (id) => {
+    this.props.update(id, this.state.name, this.state.age, this.state.height);
+
+    this.setState({
+      name: '',
+      height: '',
+      age: '',
+    });
+  };
+
+  adder = () => {
+    this.props.add(this.state.name, this.state.age, this.state.height);
+    
+    this.setState({
+      name: '',
+      height: '',
+      age: '',
+    });
+  };
+
+
   
   render() {
     return (
@@ -38,6 +66,8 @@ class App extends Component {
             <p>{smurf.name}</p>
             <p>{smurf.age}</p>
             <p>{smurf.height}</p>
+            <button onClick={() => this.props.deleter(smurf.id)}>X</button>
+            <button onClick={() => this.updateIt(smurf.id)}>Update</button>
           </div>)}
           <input
             onChange={this.handleInputChange}
@@ -57,6 +87,7 @@ class App extends Component {
             value={this.state.height}
             name="height"
           />
+          <button onClick={() => this.adder()}>ADD</button>
       </div>
     );
   }
@@ -68,4 +99,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetch })(App);
+export default connect(mapStateToProps, { fetch, update, deleter, add })(App);

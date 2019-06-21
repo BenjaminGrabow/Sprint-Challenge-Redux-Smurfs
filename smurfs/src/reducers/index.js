@@ -18,13 +18,13 @@ const reducer = (state = initialState, action) => {
     return { ...state, loading: false, error: 'NOT FOUND'};
 
     case types.ADD:
-    return { ...state, smurfs: action.payload };
+    return { loading: false, error: null, smurfs: action.payload };
 
     case types.DELETE:
-    return { ...state, smurfs: action.payload };
+    return { loading: false, error: null, smurfs: action.payload };
 
     case types.UPDATE:
-    return { ...state, smurfs: action.payload };
+    return { loading: false, error: null, smurfs: action.payload };
     default: return state;
   }
 };
