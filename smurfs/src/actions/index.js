@@ -64,5 +64,8 @@ export const update = (id, name, age, height) => dispatch => {
   axios.put(`http://localhost:3333/smurfs/${id}`, updatedSmurf)
   .then(res => {
     dispatch({ type: UPDATE, payload: res.data})
+  })
+  .catch(err => {
+    dispatch({ type: ERROR})
   });
 };
