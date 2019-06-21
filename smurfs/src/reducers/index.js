@@ -8,13 +8,13 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case LOADING:
+    case types.LOADING:
       return { ... state, loading: true};
     
-    case SUCCESS:
+    case types.SUCCESS:
         return { ...state, loading: false, smurfs: action.payload,};
 
-    case ERROR:
+    case types.ERROR:
     return { ...state, loading: false, error: 'NOT FOUND'};
     default: return state;
   }
