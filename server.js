@@ -17,7 +17,21 @@ let smurfs = [
     name: 'Brainey',
     age: 200,
     height: '5cm',
-    id: 0
+    id: 0,
+    messages: [
+      {
+        message: 'Very good work, next time again !',
+        img: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg'
+      },
+      {
+        message: 'Very good work, next time again !',
+        img: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg'
+      },
+      {
+        message: 'Very good work, next time again !',
+        img: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg'
+      },
+    ]
   }
 ];
 server.get('/smurfs', (req, res) => {
